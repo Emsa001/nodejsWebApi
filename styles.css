@@ -1,0 +1,21 @@
+#movieSection {
+  position: relative;
+  max-width: 1600px;
+  margin: auto;
+}
+
+.movie {
+  float: left;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+.movie img {
+  max-width: 300px;
+}

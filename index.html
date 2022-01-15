@@ -1,0 +1,44 @@
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>API</title>
+    <meta name="author" content="Emanue lScura" />
+    <link rel="stylesheet" href="styles.css?v=1.0" />
+  </head>
+  <body>
+    <div id="movieSection"></div>
+    <!-- your content here... -->
+    <script>
+      let url = "http://localhost:5555/";
+
+      fetch(url)
+        .then((res) => res.json())
+        .then((out) => {
+          let mainDiv = document.getElementById("movieSection");
+          out.forEach((e) => {
+            let eDiv = document.createElement("div");
+            eDiv.className = "movie";
+
+            let title = document.createElement("h3");
+            let text = document.createElement("p");
+            let image = document.createElement("img");
+
+            title.innerText = `${e.title}`;
+            text.innerHTML = `Ocena: <b>${e.points}/10</b><br />Premiera: <b>${e.releaseDate}</b>`;
+            image.src = e.image;
+
+            eDiv.appendChild(title);
+            eDiv.appendChild(text);
+            eDiv.appendChild(image);
+            mainDiv.appendChild(eDiv);
+          });
+          //console.log("Checkout this JSON! ", out);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    </script>
+  </body>
+</html>
